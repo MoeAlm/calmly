@@ -25,7 +25,7 @@ class CalmlyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: MainScreen(),
+      home: const MainScreen(),
     );
   }
 }

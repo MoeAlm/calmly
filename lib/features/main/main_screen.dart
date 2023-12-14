@@ -17,10 +17,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final screens = [
-    HomeScreen(),
-    ManageScreen(),
-    SearchScreen(),
-    BlogScreen(),
+    const HomeScreen(),
+    const ManageScreen(),
+    const SearchScreen(),
+    const BlogScreen(),
   ];
 
   @override
@@ -46,11 +46,11 @@ class _MainScreenState extends State<MainScreen> {
               gap: 8,
               activeColor: Colors.black,
               iconSize: 24,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              duration: Duration(milliseconds: 400),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: const Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
               color: Colors.black,
-              tabs: [
+              tabs: const [
                 GButton(
                   icon: IconlyBroken.home,
                   text: 'الصفحة الرئيسية',

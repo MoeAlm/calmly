@@ -27,9 +27,7 @@ class HomeScreen extends StatelessWidget {
       Podcast(image: 'assets/images/coding.png', title: 'التفكير البرمجي'),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('بودكاست'),
-      ),
+      appBar: AppBar(),
       body: ListView(
         shrinkWrap: true,
         children: [
@@ -60,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       category[index],
-                      style: theme.textTheme.headline6!.copyWith(
+                      style: theme.textTheme.titleLarge!.copyWith(
                           color: index == 0
                               ? Colors.white
                               : theme.primaryColor.swatch.shade400,
@@ -106,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(kRadius * 2)),
-                            child: Icon(Icons.play_arrow),
+                            child: const Icon(Icons.play_arrow),
                           )
                         ],
                       )
@@ -131,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                 'الرائج الان',
                 style: theme.textTheme.headlineMedium!.copyWith(fontSize: 22),
               ),
-              TextButton(onPressed: () {}, child: Text('عرض الكل')),
+              TextButton(onPressed: () {}, child: const Text('عرض الكل')),
             ],
           ).pSymmetric(v: 8, h: 12),
           SizedBox(
@@ -161,14 +159,14 @@ class HomeScreen extends StatelessWidget {
                           ),
                           height: size.height * 0.1,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           podcasts[index].title,
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.headline6!
+                          style: theme.textTheme.titleLarge!
                               .copyWith(color: index == 0 ? Colors.white : theme.primaryColor, fontSize: 17),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 2,
                         ),
                       ],
@@ -183,12 +181,12 @@ class HomeScreen extends StatelessWidget {
                 'اخر التحديثات',
                 style: theme.textTheme.headlineMedium!.copyWith(fontSize: 22),
               ),
-              TextButton(onPressed: () {}, child: Text('عرض الكل')),
+              TextButton(onPressed: () {}, child: const Text('عرض الكل')),
             ],
           ).pSymmetric(v: 8, h: 12),
           ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 2,
               itemBuilder: (context, index) {
                 return Container(
@@ -199,10 +197,10 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                        child: Text('UI'),
                         backgroundColor: theme.primaryColor,
+                        child: const Text('UI'),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -219,7 +217,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Spacer(flex: 4),
+                      const Spacer(flex: 4),
                     ],
                   ).pSymmetric(v: 8, h: 12),
                 ).pSymmetric(v: 8, h: 12);

@@ -25,14 +25,20 @@ class CustomTheme {
         elevation: 0.0,
         centerTitle: false,
         color: Palette.white,
-        titleTextStyle:
-        TextStyle(fontSize: textScale * 30, fontFamily: 'Cairo', color: Palette.black700),
+        titleTextStyle: TextStyle(
+          fontSize: textScale * 30,
+          fontFamily: 'Cairo',
+          color: Palette.black700,
+        ),
       ),
       textTheme: theme.primaryTextTheme
           .copyWith(
-        labelLarge: theme.primaryTextTheme.labelLarge?.copyWith(
-            color: Palette.black700, fontSize: 16, fontWeight: FontWeight.bold),
-      )
+            labelLarge: theme.primaryTextTheme.labelLarge?.copyWith(
+              color: Palette.black700,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          )
           .apply(displayColor: Palette.black700, fontFamily: 'Cairo'),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: Palette.black700,
@@ -40,9 +46,9 @@ class CustomTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: Palette.black700
-        )
-      )
+          foregroundColor: Palette.black700,
+        ),
+      ),
     );
   }
 }
