@@ -1,0 +1,1 @@
+const kRadius = 20.0;
