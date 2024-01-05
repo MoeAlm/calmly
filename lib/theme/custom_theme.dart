@@ -1,6 +1,8 @@
 import 'package:calmly/theme/palette.dart';
 import 'package:flutter/material.dart';
 
+import '../core/constant.dart';
+
 class CustomTheme {
   static ThemeData lightTheme(BuildContext context) {
     final theme = Theme.of(context);
@@ -40,6 +42,14 @@ class CustomTheme {
             ),
           )
           .apply(displayColor: Palette.black700, fontFamily: 'Cairo'),
+      checkboxTheme: CheckboxThemeData(
+          // fillColor: MaterialStatePropertyAll(Palette.black700),
+          checkColor: const MaterialStatePropertyAll(Colors.white),
+        shape: RoundedRectangleBorder(
+          borderRadius:
+          BorderRadius.circular(kRadius / 5),
+        ),
+      ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: Palette.black700,
         foregroundColor: Palette.white,
