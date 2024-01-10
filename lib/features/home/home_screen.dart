@@ -1,17 +1,25 @@
-import 'package:calmly/core/podcast_model.dart';
+import 'package:calmly/core/models/podcast_model.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../core/constant.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int selectedValue = 0;
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var size = MediaQuery.sizeOf(context);
+    var textScale = MediaQuery.textScalerOf(context);
     List category = [
       'الكل',
       'تطوير الذات',
@@ -33,13 +41,13 @@ class HomeScreen extends StatelessWidget {
         children: [
           Text(
             'اهلا, محمد!',
-            style: theme.textTheme.headlineMedium!
-                .copyWith(fontWeight: FontWeight.w500, fontSize: 22),
+            style: theme.textTheme.headlineMedium!.copyWith(
+                fontWeight: FontWeight.w500, fontSize: textScale.scale(22)),
           ).px(12),
           Text(
             'هل انت مستعد للتغيير؟',
-            style: theme.textTheme.headlineMedium!
-                .copyWith(fontSize: 24, fontWeight: FontWeight.w600),
+            style: theme.textTheme.headlineMedium!.copyWith(
+                fontSize: textScale.scale(24), fontWeight: FontWeight.w600),
           ).px(12),
           SizedBox(
             height: size.height * 0.05,
@@ -48,24 +56,31 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: category.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        // border: Border.all(),
-                        color: index == 0
-                            ? theme.primaryColor
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Text(
-                      category[index],
-                      style: theme.textTheme.titleLarge!.copyWith(
-                          color: index == 0
-                              ? Colors.white
-                              : theme.primaryColor.swatch.shade400,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600),
-                    ).p(10),
-                  ).pSymmetric(h: 8);
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedValue = index;
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          // border: Border.all(),
+                          color: index == selectedValue
+                              ? theme.primaryColor
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Text(
+                        category[index],
+                        style: theme.textTheme.titleLarge!.copyWith(
+                            color: index == selectedValue
+                                ? Colors.white
+                                : theme.primaryColor.swatch.shade400,
+                            fontSize: textScale.scale(16),
+                            fontWeight: FontWeight.w600),
+                      ).p(10),
+                    ).pSymmetric(h: 8),
+                  );
                 }),
           ).py12(),
           SizedBox(
@@ -127,7 +142,8 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'الرائج الان',
-                style: theme.textTheme.headlineMedium!.copyWith(fontSize: 22),
+                style: theme.textTheme.headlineMedium!
+                    .copyWith(fontSize: textScale.scale(22)),
               ),
               TextButton(onPressed: () {}, child: const Text('عرض الكل')),
             ],
@@ -141,8 +157,10 @@ class HomeScreen extends StatelessWidget {
                   return Container(
                     width: size.width * 0.25,
                     decoration: BoxDecoration(
-                      border: Border.all(color: index == 0 ? Colors.transparent : theme.primaryColor ),
-
+                      border: Border.all(
+                          color: index == 0
+                              ? Colors.transparent
+                              : theme.primaryColor),
                       color:
                           index == 0 ? theme.primaryColor : Colors.transparent,
                       borderRadius: BorderRadius.circular(kRadius),
@@ -163,8 +181,11 @@ class HomeScreen extends StatelessWidget {
                         Text(
                           podcasts[index].title,
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.titleLarge!
-                              .copyWith(color: index == 0 ? Colors.white : theme.primaryColor, fontSize: 17),
+                          style: theme.textTheme.titleLarge!.copyWith(
+                              color: index == 0
+                                  ? Colors.white
+                                  : theme.primaryColor,
+                              fontSize: 17),
                         ),
                         const Spacer(
                           flex: 2,
@@ -179,7 +200,8 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'اخر التحديثات',
-                style: theme.textTheme.headlineMedium!.copyWith(fontSize: 22),
+                style: theme.textTheme.headlineMedium!
+                    .copyWith(fontSize: textScale.scale(22)),
               ),
               TextButton(onPressed: () {}, child: const Text('عرض الكل')),
             ],

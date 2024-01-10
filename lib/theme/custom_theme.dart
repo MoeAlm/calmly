@@ -6,7 +6,7 @@ import '../core/constant.dart';
 class CustomTheme {
   static ThemeData lightTheme(BuildContext context) {
     final theme = Theme.of(context);
-    final textScale = MediaQuery.textScaleFactorOf(context);
+    final textScale = MediaQuery.textScalerOf(context);
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -28,7 +28,7 @@ class CustomTheme {
         centerTitle: false,
         color: Palette.white,
         titleTextStyle: TextStyle(
-          fontSize: textScale * 30,
+          fontSize: textScale.scale(30),
           fontFamily: 'Cairo',
           color: Palette.black700,
         ),
@@ -37,13 +37,12 @@ class CustomTheme {
           .copyWith(
             labelLarge: theme.primaryTextTheme.labelLarge?.copyWith(
               color: Palette.black700,
-              fontSize: 16,
+              fontSize: textScale.scale(16),
               fontWeight: FontWeight.bold,
             ),
           )
           .apply(displayColor: Palette.black700, fontFamily: 'Cairo'),
       checkboxTheme: CheckboxThemeData(
-          // fillColor: MaterialStatePropertyAll(Palette.black700),
           checkColor: const MaterialStatePropertyAll(Colors.white),
         shape: RoundedRectangleBorder(
           borderRadius:
@@ -54,6 +53,7 @@ class CustomTheme {
         backgroundColor: Palette.black700,
         foregroundColor: Palette.white,
       ),
+
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: Palette.black700,

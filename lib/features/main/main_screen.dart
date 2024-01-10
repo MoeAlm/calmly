@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final screens = [
     const HomeScreen(),
-    const ManageScreen(),
+     ManageScreen(),
     const SearchScreen(),
     const BlogScreen(),
   ];
