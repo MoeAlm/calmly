@@ -1,19 +1,29 @@
-import 'package:calmly/core/models/podcast_model.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../core/constant.dart';
+import '../../../../core/constant.dart';
+import '../../../../core/helper/audio_player_helper.dart';
+import '../../../../core/models/podcast_model.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   int selectedValue = 0;
+  final audioHelper = AudioPlayerHelper();
+
+  List<Podcast> podcasts = [
+    Podcast(image: 'assets/images/coding.png', title: 'التفكير البرمجي'),
+    Podcast(image: 'assets/images/stress.png', title: 'ادارة الازمات',),
+    Podcast(image: 'assets/images/thinking.png', title: 'ايجاد الحلول'),
+    Podcast(image: 'assets/images/coding.png', title: 'التفكير البرمجي'),
+  ];
+  bool isMove = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
       'البرمجة',
       'علم النفس',
     ];
-    List<Podcast> podcasts = [
-      Podcast(image: 'assets/images/coding.png', title: 'التفكير البرمجي'),
-      Podcast(image: 'assets/images/stress.png', title: 'ادارة الازمات'),
-      Podcast(image: 'assets/images/thinking.png', title: 'ايجاد الحلول'),
-      Podcast(image: 'assets/images/coding.png', title: 'التفكير البرمجي'),
-    ];
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text(''),
+      ),
       body: ListView(
         shrinkWrap: true,
         children: [
@@ -115,11 +122,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           FloatingActionButton(
                             elevation: 0,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                podcasts[itemIndex].isPlay = !podcasts[itemIndex].isPlay;
+                                isMove = !podcasts[itemIndex].isPlay;
+                                if (podcasts[itemIndex].isPlay) {
+                                  audioHelper.play('/audio/take_on_me.mp3', isAsset: true);
+                                } else{
+                                  audioHelper.pause();
+                                }
+                              });
+                            },
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(kRadius * 2)),
-                            child: const Icon(Icons.play_arrow),
+                            child:  podcasts[itemIndex].isPlay?  const Icon(Icons.pause) : const Icon( Icons.play_arrow ),
                           )
                         ],
                       )
@@ -128,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
               options: CarouselOptions(
-                autoPlay: true,
+                autoPlay: isMove,
                 reverse: true,
                 enlargeCenterPage: true,
                 viewportFraction: 0.9,

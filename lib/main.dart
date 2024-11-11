@@ -1,8 +1,8 @@
-import 'package:calmly/theme/custom_theme.dart';
+import 'package:calmly/src/features/main/main_screen.dart';
+import 'package:calmly/src/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'features/main/main_screen.dart';
 
 void main() {
   runApp(const CalmlyApp());

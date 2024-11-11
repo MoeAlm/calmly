@@ -1,4 +1,4 @@
-import 'package:calmly/theme/palette.dart';
+import 'package:calmly/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 import '../core/constant.dart';
@@ -43,7 +43,7 @@ class CustomTheme {
           )
           .apply(displayColor: Palette.black700, fontFamily: 'Cairo'),
       checkboxTheme: CheckboxThemeData(
-          checkColor: const MaterialStatePropertyAll(Colors.white),
+          checkColor: const WidgetStatePropertyAll(Colors.white),
         shape: RoundedRectangleBorder(
           borderRadius:
           BorderRadius.circular(kRadius / 5),

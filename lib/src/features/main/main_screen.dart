@@ -1,9 +1,9 @@
-import 'package:calmly/features/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconly/iconly.dart';
 
 import '../blog/blog_screen.dart';
+import '../home/presentation/page/home_page.dart';
 import '../management/maanage_screen.dart';
 import '../search/search_screen.dart';
 
@@ -17,8 +17,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final screens = [
-    const HomeScreen(),
-     ManageScreen(),
+    const HomePage(),
+     const ManageScreen(),
     const SearchScreen(),
     const BlogScreen(),
   ];

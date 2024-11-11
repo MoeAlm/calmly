@@ -1,7 +1,8 @@
-import 'package:calmly/core/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../../core/constant.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});
@@ -20,9 +21,9 @@ class BlogScreen extends StatelessWidget {
       body: ListView(
         children: [
           SearchBar(
-            elevation: const MaterialStatePropertyAll(0),
+            elevation: const WidgetStatePropertyAll(0),
             backgroundColor:
-                MaterialStatePropertyAll(theme.primaryColor.swatch.shade100),
+                WidgetStatePropertyAll(theme.primaryColor.swatch.shade100),
             hintText: 'قم بالبحث من هنا',
             trailing: const [Icon(IconlyLight.search)],
           ).pSymmetric(v: 20, h: 24),
